@@ -2,3 +2,14 @@
     padding: 0;
     margin: 0;
 }
+
+body {
+    font-family: 'Microsoft Yahei';
+    width: 400px;
+    min-height: 100px;
+    max-height: 500px;
+}
+
+#todoList li{
+    cursor: pointer;
+}

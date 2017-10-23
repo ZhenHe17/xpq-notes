@@ -1,1 +1,3 @@
-console.log('popup.js')
+$('#todoList').click(function(e){
+  console.info(e)
+})
