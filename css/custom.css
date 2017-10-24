@@ -1,17 +1,17 @@
-* {
+#xpqcrxHome * {
     padding: 0;
     margin: 0;
 }
-.fr{float: right;}
+#xpqcrxHome .fr{float: right;}
 
-body {
+#xpqcrxHome body {
     font-family: 'Microsoft Yahei';
     width: 400px;
     min-height: 200px;
     max-height: 800px;
 }
 
-.Header {
+#xpqcrxHome .Header {
     z-index: 1;
     padding: 4px 12px;
     height: 32px;
@@ -33,19 +33,19 @@ body {
     border-radius: 0.25em;
     transition: background .4s;
 }
-.Header .btn:focus{
+#xpqcrxHome .Header .btn:focus{
     outline: none;
 }
-.Header .btn:hover{
+#xpqcrxHome .Header .btn:hover{
     background: #575c5f;
 }
 
 
-#todoList{
+#xpqcrxHome #todoList{
     padding: 8px 12px;
 }
 
-#todoList li{
+#xpqcrxHome #todoList li{
     margin-bottom: 6px;
     cursor: pointer;
     color: #24292e;
