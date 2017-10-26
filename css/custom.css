@@ -1,10 +1,6 @@
-#xpqcrxHome * {
-    padding: 0;
-    margin: 0;
-}
 #xpqcrxHome .fr{float: right;}
 
-#xpqcrxHome body {
+#xpqcrxHome,#homeContainer,#xpqNotesDetailContainer{
     font-family: 'Microsoft Yahei';
     width: 400px;
     min-height: 200px;
@@ -21,7 +17,7 @@
     border-bottom: 1px #e1e4e8 solid;
 }
 
-.Header .btn{
+#xpqcrxHome .Header .btn{
     display: block;
     height: 30px;
     line-height: 30px;
@@ -41,11 +37,12 @@
 }
 
 
-#xpqcrxHome #todoList{
+#xpqTodoList{
     padding: 8px 12px;
+    list-style-type: none;    
 }
 
-#xpqcrxHome #todoList li{
+#xpqTodoList li{
     margin-bottom: 6px;
     cursor: pointer;
     color: #24292e;
