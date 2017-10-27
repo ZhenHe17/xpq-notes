@@ -1,23 +1,37 @@
 #xpqcrxHome .fr{float: right;}
+#xpqcrxHome .fl{float: left;}
 
-#xpqcrxHome,#homeContainer,#xpqNotesDetailContainer{
+#xpqcrxHome,#xpqHomeContainer,#xpqNotesDetailContainer{
     font-family: 'Microsoft Yahei';
     width: 400px;
     min-height: 200px;
     max-height: 800px;
+    box-sizing: border-box;
+}
+#xpqHomeContainer,#xpqNotesDetailContainer{
+    display: inline-block;
+    vertical-align: top;
+    min-height: 200;
+    transition: all .3s ease-out;
+    font-size: 16px;
+}
+
+#xpqCarouse{
+    width: 900px;
+    font-size: 0;
 }
 
 #xpqcrxHome .Header {
     z-index: 1;
     padding: 4px 12px;
-    height: 32px;
-    line-height: 32px;
+    height: 40px;
+    line-height: 40px;
     color: #24292e;
     font-size: 16px;
     border-bottom: 1px #e1e4e8 solid;
 }
 
-#xpqcrxHome .Header .btn{
+#xpqcrxHome .btn{
     display: block;
     height: 30px;
     line-height: 30px;
@@ -29,10 +43,10 @@
     border-radius: 0.25em;
     transition: background .4s;
 }
-#xpqcrxHome .Header .btn:focus{
+#xpqcrxHome .btn:focus{
     outline: none;
 }
-#xpqcrxHome .Header .btn:hover{
+#xpqcrxHome .btn:hover{
     background: #575c5f;
 }
 
@@ -47,4 +61,7 @@
     cursor: pointer;
     color: #24292e;
     font-size: 18px;
+}
+
+#xpqNotesDetailContainer{
 }
