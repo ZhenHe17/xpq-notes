@@ -1,12 +1,14 @@
-var createBtn = $('#xpqCreateNewNote');
-var backBtn = $('#xpqBackHomeBtn');
-var homeContainer = $('#xpqHomeContainer');
-var notesDetailContainer = $('#xpqNotesDetailContainer');
+'use strict'
 
-createBtn.click(function(e){
-  homeContainer.css('marginLeft','-400px');
+var createBtn = document.querySelector('#xpqCreateNewNote');
+var backBtn = document.querySelector('#xpqBackHomeBtn');
+var homeContainer = document.querySelector('#xpqHomeContainer');
+var notesDetailContainer = document.querySelector('#xpqNotesDetailContainer');
+
+createBtn.addEventListener('click',function(e){
+  homeContainer.style.marginLeft = '-400px';
 })
 
-backBtn.click(function(e){
-  homeContainer.css('marginLeft','0px');
+backBtn.addEventListener('click',function(e){
+  homeContainer.style.marginLeft = '0px';
 })
