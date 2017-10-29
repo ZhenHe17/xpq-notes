@@ -37,17 +37,29 @@
     line-height: 30px;
     padding: 0 8px;
     text-decoration: none;
-    color: rgba(255, 255, 255, .85);
-    background: #24292e;
-    border: 1px solid rgba(27,31,35,0.2);
     border-radius: 0.25em;
     transition: background .4s;
 }
+#xpqcrxHome .black-btn{
+    color: rgba(255, 255, 255, .85);
+    background: #24292e;
+    border: 1px solid rgba(27,31,35,0.2);
+}
+#xpqcrxHome .red-btn{
+    color: rgba(255, 255, 255, .85);
+    background: #f36c46;
+    border: 1px solid #f35c36; 
+}
+
 #xpqcrxHome .btn:focus{
     outline: none;
 }
-#xpqcrxHome .btn:hover{
+#xpqcrxHome .black-btn:hover{
     background: #575c5f;
+}
+#xpqcrxHome .red-btn:hover{
+    background: #ff8c66;
+    border: 1px solid #ff8c66; 
 }
 
 
