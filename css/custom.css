@@ -75,5 +75,12 @@
     font-size: 18px;
 }
 
+#xpqNoteContent{
+    /* padding:4px 12px; */
+    /* box-sizing: border-box; */
+    width: 380px;
+    margin-left: 10px;
+}
+
 #xpqNotesDetailContainer{
 }

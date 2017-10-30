@@ -5,7 +5,9 @@ var backBtn = document.querySelector('#xpqBackHomeBtn');
 var deleteBtn = document.querySelector('#xpqDeleteNoteBtn');
 var homeContainer = document.querySelector('#xpqHomeContainer');
 var notesDetailContainer = document.querySelector('#xpqNotesDetailContainer');
+var noteContent = document.querySelector('#xpqNoteContent');
 var todoList = document.querySelector('#xpqTodoList');
+var noteTitles = todoList.querySelectorAll('li');
 
 function storageAvailable(type) {
   try {
@@ -33,6 +35,7 @@ function storageAvailable(type) {
 
 createBtn.addEventListener('click',function(e){
   homeContainer.style.marginLeft = '-400px';
+  noteContent.innerHTML = '<textarea placeholder="请输入便签内容..."></textarea>'
 })
 
 backBtn.addEventListener('click',function(e){
@@ -46,7 +49,7 @@ deleteBtn.addEventListener('click',function(e){
 if (storageAvailable('localStorage')) {
   // Yippee! We can use localStorage awesomeness
   var storage = window.localStorage;
-  storage.setItem('xpqNotesTip', '欢迎使用小皮球便签!');
+  // storage.setItem('xpqNotesTip', '欢迎使用小皮球便签!');
   todoList.innerHTML = storage.getItem('xpqNotesTip');
 }
 else {
