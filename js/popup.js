@@ -6,8 +6,8 @@ var deleteBtn = document.querySelector('#xpqDeleteNoteBtn');
 var homeContainer = document.querySelector('#xpqHomeContainer');
 var notesDetailContainer = document.querySelector('#xpqNotesDetailContainer');
 var noteContent = document.querySelector('#xpqNoteContent');
-var todoList = document.querySelector('#xpqTodoList');
-var noteTitles = todoList.querySelectorAll('li');
+var noteList = document.querySelector('#xpqNoteList');
+var noteTitles = noteList.querySelectorAll('li');
 
 function storageAvailable(type) {
   try {
@@ -33,6 +33,22 @@ function storageAvailable(type) {
   }
 }
 
+if (storageAvailable('localStorage')) {
+  // Yippee! We can use localStorage awesomeness
+  var storage = window.localStorage;
+  // var newNotes = [{title:'使用说明',content:'点击上方按钮以使用便签功能'},{title:'注意事项',content:'清除浏览器数据可能会删除便签内容, 请提前做好备份'}];
+  // storage.setItem('xpqNotes', JSON.stringify(newNotes));
+  var notes = JSON.parse(storage.getItem('xpqNotes'));
+  var list = '';
+  notes.forEach(function(ele,index) {
+    list+='<li class="note'+ index +'">'+ele.title+'</li>';
+  }, this);
+  noteList.innerHTML = list;
+}
+else {
+  // Too bad, no localStorage for us
+}
+
 createBtn.addEventListener('click',function(e){
   homeContainer.style.marginLeft = '-400px';
   noteContent.innerHTML = '<textarea placeholder="请输入便签内容..."></textarea>'
@@ -46,18 +62,10 @@ deleteBtn.addEventListener('click',function(e){
   homeContainer.style.marginLeft = '0px';
 })
 
-if (storageAvailable('localStorage')) {
-  // Yippee! We can use localStorage awesomeness
-  var storage = window.localStorage;
-  // var newNotes = [{title:'使用说明',content:'点击上方按钮以使用便签功能'},{title:'注意事项',content:'清除浏览器数据可能会删除便签内容, 请提前做好备份'}];
-  // storage.setItem('xpqNotes', JSON.stringify(newNotes));
-  var notes = JSON.parse(storage.getItem('xpqNotes'));
-  var list = '';
-  notes.forEach(function(ele) {
-    list+='<li>'+ele.title+'</li>'
-  }, this);
-  todoList.innerHTML = list
-}
-else {
-  // Too bad, no localStorage for us
-}
+xpqNoteList.addEventListener('click',function(e){
+  homeContainer.style.marginLeft = '-400px';
+  console.info(e);
+  var index = e.target.className[e.target.className.length-1]
+  noteContent.innerHTML = notes[parseInt(index)].content;
+})
+

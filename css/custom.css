@@ -63,12 +63,12 @@
 }
 
 
-#xpqTodoList{
+#xpqNoteList{
     padding: 8px 12px;
     list-style-type: none;    
 }
 
-#xpqTodoList li{
+#xpqNoteList li{
     margin-bottom: 6px;
     cursor: pointer;
     color: #24292e;
