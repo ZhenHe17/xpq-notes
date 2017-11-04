@@ -73,6 +73,10 @@
     cursor: pointer;
     color: #24292e;
     font-size: 18px;
+    transition: color .3s;
+}
+#xpqNoteList li:hover{
+    color: #888;
 }
 
 #xpqNoteContent{
@@ -80,6 +84,17 @@
     /* box-sizing: border-box; */
     width: 380px;
     margin-left: 10px;
+    padding-top: 13px;
+}
+
+#xpqNewNoteTitleInput{
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+#xpqNewNoteTextarea{
+    width: 100%;
+    min-height: 80px;
 }
 
 #xpqNotesDetailContainer{
