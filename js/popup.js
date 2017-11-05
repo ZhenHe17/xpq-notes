@@ -3,16 +3,17 @@
 var createBtn = document.querySelector('#xpqCreateNewNote');
 var backBtn = document.querySelector('#xpqBackHomeBtn');
 var deleteBtn = document.querySelector('#xpqDeleteNoteBtn');
-var saveBtn = document.querySelector('#xpqSaveNewNoteBtn');
 
 var homeContainer = document.querySelector('#xpqHomeContainer');
 var notesDetailContainer = document.querySelector('#xpqNotesDetailContainer');
+var newNoteContainer = document.querySelector('#xpqNewNoteContainer');
 var noteContent = document.querySelector('#xpqNoteContent');
 var noteList = document.querySelector('#xpqNoteList');
 var noteTitles = noteList.querySelectorAll('li');
 
-var titleInput = noteList.querySelectorAll('#xpqNewNoteTitleInput');
-var contentTextarea = noteList.querySelectorAll('#xpqNewNoteTextarea');
+var saveBtn = document.querySelector('#xpqSaveNewNoteBtn');
+var titleInput = noteList.querySelector('#xpqNewNoteTitleInput');
+var contentTextarea = noteList.querySelector('#xpqNewNoteTextarea');
 
 function storageAvailable(type) {
   try {
@@ -59,9 +60,6 @@ else {
 
 createBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
-  noteContent.innerHTML = '<input id="xpqNewNoteTitleInput" placeholder="请输入便签标题..."></input>'
-    + '<textarea id="xpqNewNoteTextarea" placeholder="请输入便签内容..."></textarea>'
-    + '<a href="#" id="xpqSaveNewNoteBtn" class="btn black-btn fr">保存</a>';
 })
 
 backBtn.addEventListener('click', function (e) {
@@ -87,4 +85,3 @@ saveBtn.addEventListener('click', function (e) {
   alert('保存便签成功!');
   homeContainer.style.marginLeft = '0px';
 })
-
