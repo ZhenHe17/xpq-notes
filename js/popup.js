@@ -41,10 +41,12 @@ function storageAvailable(type) {
 if (storageAvailable('localStorage')) {
   // Yippee! We can use localStorage awesomeness
   var storage = window.localStorage;
-  // var newNotes = [{title:'使用说明',content:'点击上方按钮以使用便签功能'},{title:'注意事项',content:'清除浏览器数据可能会删除便签内容, 请提前做好备份'}];
-  // storage.setItem('xpqNotes', JSON.stringify(newNotes));
   var notes = JSON.parse(storage.getItem('xpqNotes'));
   var list = '';
+  if (!notes) {
+    var newNotes = [{ title: '使用说明', content: '点击上方按钮以使用便签功能' }, { title: '注意事项', content: '清除浏览器数据可能会删除便签内容, 请提前做好备份' }];
+    storage.setItem('xpqNotes', JSON.stringify(newNotes));
+  }
   notes.forEach(function (ele, index) {
     list += '<li class="note' + index + '">' + ele.title + '</li>';
   }, this);
