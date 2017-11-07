@@ -12,8 +12,8 @@ var noteList = document.querySelector('#xpqNoteList');
 var noteTitles = noteList.querySelectorAll('li');
 
 var saveBtn = document.querySelector('#xpqSaveNewNoteBtn');
-var titleInput = noteList.querySelector('#xpqNewNoteTitleInput');
-var contentTextarea = noteList.querySelector('#xpqNewNoteTextarea');
+var titleInput = document.querySelector('#xpqNewNoteTitleInput');
+var contentTextarea = document.querySelector('#xpqNewNoteTextarea');
 
 function storageAvailable(type) {
   try {
@@ -39,19 +39,24 @@ function storageAvailable(type) {
   }
 }
 
-if (storageAvailable('localStorage')) {
-  // Yippee! We can use localStorage awesomeness
-  var storage = window.localStorage;
-  var notes = JSON.parse(storage.getItem('xpqNotes'));
+function setNoteList(notes) {
   var list = '';
-  if (!notes) {
-    var newNotes = [{ title: '使用说明', content: '点击上方按钮以使用便签功能' }, { title: '注意事项', content: '清除浏览器数据可能会删除便签内容, 请提前做好备份' }];
-    storage.setItem('xpqNotes', JSON.stringify(newNotes));
-  }
   notes.forEach(function (ele, index) {
     list += '<li class="note' + index + '">' + ele.title + '</li>';
   }, this);
   noteList.innerHTML = list;
+}
+
+if (storageAvailable('localStorage')) {
+  // Yippee! We can use localStorage awesomeness
+  var storage = window.localStorage;
+  var notes = JSON.parse(storage.getItem('xpqNotes'));
+  if (!notes) {
+    var newNotes = [{ title: '使用说明', content: '点击上方按钮以使用便签功能' }, { title: '注意事项', content: '清除浏览器数据可能会删除便签内容, 请提前做好备份' }];
+    storage.setItem('xpqNotes', JSON.stringify(newNotes));
+    notes = newNotes;
+  }
+  setNoteList(notes)
 }
 else {
   // Too bad, no localStorage for us
@@ -60,6 +65,8 @@ else {
 
 createBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
+  noteContent.style.display = 'none';
+  newNoteContainer.style.display = 'block';
 })
 
 backBtn.addEventListener('click', function (e) {
@@ -72,16 +79,20 @@ deleteBtn.addEventListener('click', function (e) {
 
 xpqNoteList.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
-  console.info(e);
+  noteContent.style.display = 'block';
+  newNoteContainer.style.display = 'none';
   var index = e.target.className[e.target.className.length - 1]
   noteContent.innerHTML = notes[parseInt(index)].content;
 })
 
 saveBtn.addEventListener('click', function (e) {
-  console.info(titleInput)
-  console.info(contentTextarea)
+  console.info(titleInput.value)
+  console.info(contentTextarea.value)
   let newNoteTitle = titleInput;
-  notes.push({})
-  alert('保存便签成功!');
+  if (titleInput.value) {
+    notes.push({ title: titleInput.value, content: contentTextarea.value })
+    storage.setItem('xpqNotes', JSON.stringify(notes));
+  }
+  setNoteList(notes)
   homeContainer.style.marginLeft = '0px';
 })
