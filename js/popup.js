@@ -3,6 +3,7 @@
 var createBtn = document.querySelector('#xpqCreateNewNote');
 var backBtn = document.querySelector('#xpqBackHomeBtn');
 var deleteBtn = document.querySelector('#xpqDeleteNoteBtn');
+var confirmDeleteBtn = document.querySelector('#xpqConfirmDeleteNoteBtn');
 
 var homeContainer = document.querySelector('#xpqHomeContainer');
 var notesDetailContainer = document.querySelector('#xpqNotesDetailContainer');
@@ -14,6 +15,8 @@ var noteTitles = noteList.querySelectorAll('li');
 var saveBtn = document.querySelector('#xpqSaveNewNoteBtn');
 var titleInput = document.querySelector('#xpqNewNoteTitleInput');
 var contentTextarea = document.querySelector('#xpqNewNoteTextarea');
+
+var selectedNoteIndex = -1;
 
 function storageAvailable(type) {
   try {
@@ -65,24 +68,35 @@ else {
 
 createBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
+  deleteBtn.style.display = 'none';
   noteContent.style.display = 'none';
   newNoteContainer.style.display = 'block';
 })
 
 backBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '0px';
+  deleteBtn.style.display = 'block';
 })
 
 deleteBtn.addEventListener('click', function (e) {
+  deleteBtn.style.display = 'none';
+  confirmDeleteBtn.style.display = 'block';
+})
+
+confirmDeleteBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '0px';
+  deleteBtn.style.display = 'block';
+  confirmDeleteBtn.style.display = 'none';
 })
 
 xpqNoteList.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
   noteContent.style.display = 'block';
+  deleteBtn.style.display = 'block';
   newNoteContainer.style.display = 'none';
   var index = e.target.className[e.target.className.length - 1]
   noteContent.innerHTML = notes[parseInt(index)].content;
+  selectedNoteIndex = index
 })
 
 saveBtn.addEventListener('click', function (e) {
