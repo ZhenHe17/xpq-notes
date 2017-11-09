@@ -12,7 +12,7 @@
 	"browser_action": 
 	{
 		"default_icon": "img/icon.png",
-		"default_title": "小皮球和小气筒",
+		"default_title": "小皮球便签",
 		"default_popup": "popup.html"
 	},
 	"content_scripts": 
