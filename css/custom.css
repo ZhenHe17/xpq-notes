@@ -38,7 +38,7 @@
     padding: 0 8px;
     text-decoration: none;
     border-radius: 0.25em;
-    transition: background .4s;
+    transition: opacity .4s;
 }
 #xpqcrxHome .black-btn{
     color: rgba(255, 255, 255, .85);
@@ -50,16 +50,19 @@
     background: #f36c46;
     border: 1px solid #f35c36; 
 }
+#xpqcrxHome .dark-red-btn{
+  color: rgba(255, 255, 255, .85);
+  background: #d35c36;
+  border: 1px solid #f35c36;
+  display: none; 
+}
 
 #xpqcrxHome .btn:focus{
     outline: none;
 }
-#xpqcrxHome .black-btn:hover{
-    background: #575c5f;
-}
-#xpqcrxHome .red-btn:hover{
-    background: #ff8c66;
-    border: 1px solid #ff8c66; 
+#xpqcrxHome .btn:hover{
+  outline: none;
+  opacity: .8;
 }
 
 

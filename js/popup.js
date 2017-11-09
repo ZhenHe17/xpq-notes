@@ -44,6 +44,7 @@ function storageAvailable(type) {
 
 function setNoteList(notes) {
   var list = '';
+  storage.setItem('xpqNotes', JSON.stringify(notes));
   notes.forEach(function (ele, index) {
     list += '<li class="note' + index + '">' + ele.title + '</li>';
   }, this);
@@ -69,13 +70,13 @@ else {
 createBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
   deleteBtn.style.display = 'none';
+  confirmDeleteBtn.style.display = 'none';
   noteContent.style.display = 'none';
   newNoteContainer.style.display = 'block';
 })
 
 backBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '0px';
-  deleteBtn.style.display = 'block';
 })
 
 deleteBtn.addEventListener('click', function (e) {
@@ -84,6 +85,8 @@ deleteBtn.addEventListener('click', function (e) {
 })
 
 confirmDeleteBtn.addEventListener('click', function (e) {
+  notes.splice(selectedNoteIndex, 1);
+  setNoteList(notes) 
   homeContainer.style.marginLeft = '0px';
   deleteBtn.style.display = 'block';
   confirmDeleteBtn.style.display = 'none';
