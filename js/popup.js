@@ -2,6 +2,7 @@
 
 var createBtn = document.querySelector('#xpqCreateNewNote');
 var backBtn = document.querySelector('#xpqBackHomeBtn');
+var editBtn = document.querySelector('#xpqEditNoteBtn');
 var deleteBtn = document.querySelector('#xpqDeleteNoteBtn');
 var confirmDeleteBtn = document.querySelector('#xpqConfirmDeleteNoteBtn');
 
@@ -69,6 +70,7 @@ else {
 
 createBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
+  selectedNoteIndex = null;
   deleteBtn.style.display = 'none';
   confirmDeleteBtn.style.display = 'none';
   noteContent.style.display = 'none';
