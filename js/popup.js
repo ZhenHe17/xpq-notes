@@ -1,8 +1,8 @@
 'use strict'
 
 var createBtn = document.querySelector('#xpqCreateNewNote');
-var editBtn = document.querySelector('#xpqEditNoteBtn');
 var backBtn = document.querySelector('#xpqBackHomeBtn');
+var editBtn = document.querySelector('#xpqEditNoteBtn');
 var deleteBtn = document.querySelector('#xpqDeleteNoteBtn');
 var confirmDeleteBtn = document.querySelector('#xpqConfirmDeleteNoteBtn');
 
