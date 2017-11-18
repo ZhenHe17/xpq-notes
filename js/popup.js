@@ -2,9 +2,13 @@
 
 var createBtn = document.querySelector('#xpqCreateNewNote');
 var backBtn = document.querySelector('#xpqBackHomeBtn');
-var editBtn = document.querySelector('#xpqEditNoteBtn');
-var deleteBtn = document.querySelector('#xpqDeleteNoteBtn');
-var confirmDeleteBtn = document.querySelector('#xpqConfirmDeleteNoteBtn');
+
+// 编辑便签、删除便签、确认删除三个按钮 同时只有一个显示
+var theThreeBtns = {
+  editBtn: document.querySelector('#xpqEditNoteBtn'),
+  deleteBtn: document.querySelector('#xpqDeleteNoteBtn'),
+  confirmDeleteBtn: document.querySelector('#xpqConfirmDeleteNoteBtn')
+}
 
 var homeContainer = document.querySelector('#xpqHomeContainer');
 var notesDetailContainer = document.querySelector('#xpqNotesDetailContainer');
@@ -43,6 +47,16 @@ function storageAvailable(type) {
   }
 }
 
+// 编辑便签、删除便签、确认删除三个按钮 同时只有一个显示
+function showBtnBetweenTheThree(btnName) {
+  theThreeBtns.editBtn.style.display = 'none';
+  theThreeBtns.deleteBtn.style.display = 'none';
+  theThreeBtns.confirmDeleteBtn.style.display = 'none';
+  if (btnName) {
+    theThreeBtns[btnName].style.display = 'block';
+  }
+}
+
 function setNoteList(notes) {
   var list = '';
   storage.setItem('xpqNotes', JSON.stringify(notes));
@@ -71,8 +85,7 @@ else {
 createBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
   selectedNoteIndex = null;
-  deleteBtn.style.display = 'none';
-  confirmDeleteBtn.style.display = 'none';
+  showBtnBetweenTheThree(null)
   noteContent.style.display = 'none';
   newNoteContainer.style.display = 'block';
 })
@@ -81,32 +94,29 @@ backBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '0px';
 })
 
-deleteBtn.addEventListener('click', function (e) {
-  deleteBtn.style.display = 'none';
-  confirmDeleteBtn.style.display = 'block';
+theThreeBtns.deleteBtn.addEventListener('click', function (e) {
+  showBtnBetweenTheThree('confirmDeleteBtn')
 })
 
-confirmDeleteBtn.addEventListener('click', function (e) {
+theThreeBtns.confirmDeleteBtn.addEventListener('click', function (e) {
   notes.splice(selectedNoteIndex, 1);
-  setNoteList(notes) 
+  setNoteList(notes)
   homeContainer.style.marginLeft = '0px';
-  deleteBtn.style.display = 'block';
-  confirmDeleteBtn.style.display = 'none';
 })
 
 xpqNoteList.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
   noteContent.style.display = 'block';
-  deleteBtn.style.display = 'block';
+  showBtnBetweenTheThree('editBtn');
   newNoteContainer.style.display = 'none';
   var index = e.target.className[e.target.className.length - 1]
   noteContent.innerHTML = notes[parseInt(index)].content;
-  selectedNoteIndex = index
+  selectedNoteIndex = index;
 })
 
 saveBtn.addEventListener('click', function (e) {
-  console.info(titleInput.value)
-  console.info(contentTextarea.value)
+  // console.info(titleInput.value)
+  // console.info(contentTextarea.value)
   let newNoteTitle = titleInput;
   if (titleInput.value) {
     notes.push({ title: titleInput.value, content: contentTextarea.value })
