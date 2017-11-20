@@ -22,6 +22,7 @@ var titleInput = document.querySelector('#xpqNewNoteTitleInput');
 var contentTextarea = document.querySelector('#xpqNewNoteTextarea');
 
 var selectedNoteIndex = -1;
+var isEditing = false;
 
 function storageAvailable(type) {
   try {
@@ -88,14 +89,26 @@ createBtn.addEventListener('click', function (e) {
   showBtnBetweenTheThree(null)
   noteContent.style.display = 'none';
   newNoteContainer.style.display = 'block';
+  isEditing = false;
+  titleInput.value = '';
+  contentTextarea.value = '';
 })
 
 backBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '0px';
 })
 
+theThreeBtns.editBtn.addEventListener('click', function (e) {
+  showBtnBetweenTheThree('deleteBtn');
+  noteContent.style.display = 'none';
+  newNoteContainer.style.display = 'block';
+  isEditing = true;
+  titleInput.value = notes[parseInt(selectedNoteIndex)].title;
+  contentTextarea.value = notes[parseInt(selectedNoteIndex)].content;
+})
+
 theThreeBtns.deleteBtn.addEventListener('click', function (e) {
-  showBtnBetweenTheThree('confirmDeleteBtn')
+  showBtnBetweenTheThree('confirmDeleteBtn');
 })
 
 theThreeBtns.confirmDeleteBtn.addEventListener('click', function (e) {
@@ -117,11 +130,15 @@ xpqNoteList.addEventListener('click', function (e) {
 saveBtn.addEventListener('click', function (e) {
   // console.info(titleInput.value)
   // console.info(contentTextarea.value)
-  let newNoteTitle = titleInput;
   if (titleInput.value) {
-    notes.push({ title: titleInput.value, content: contentTextarea.value })
+    var savingNote = { title: titleInput.value, content: contentTextarea.value }
+    if (isEditing) {
+      notes[selectedNoteIndex] = savingNote
+    } else {
+      notes.push(savingNote)
+    }
     storage.setItem('xpqNotes', JSON.stringify(notes));
+    setNoteList(notes)
   }
-  setNoteList(notes)
   homeContainer.style.marginLeft = '0px';
 })
