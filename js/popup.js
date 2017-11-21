@@ -13,6 +13,8 @@ var theThreeBtns = {
 var homeContainer = document.querySelector('#xpqHomeContainer');
 var notesDetailContainer = document.querySelector('#xpqNotesDetailContainer');
 var newNoteContainer = document.querySelector('#xpqNewNoteContainer');
+var noteWrapper = document.querySelector('#xpqNoteWrapper');
+var noteTitle = document.querySelector('#xpqNoteTitle');
 var noteContent = document.querySelector('#xpqNoteContent');
 var noteList = document.querySelector('#xpqNoteList');
 var noteTitles = noteList.querySelectorAll('li');
@@ -87,7 +89,7 @@ createBtn.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
   selectedNoteIndex = null;
   showBtnBetweenTheThree(null)
-  noteContent.style.display = 'none';
+  noteWrapper.style.display = 'none';
   newNoteContainer.style.display = 'block';
   isEditing = false;
   titleInput.value = '';
@@ -100,7 +102,7 @@ backBtn.addEventListener('click', function (e) {
 
 theThreeBtns.editBtn.addEventListener('click', function (e) {
   showBtnBetweenTheThree('deleteBtn');
-  noteContent.style.display = 'none';
+  noteWrapper.style.display = 'none';
   newNoteContainer.style.display = 'block';
   isEditing = true;
   titleInput.value = notes[parseInt(selectedNoteIndex)].title;
@@ -119,10 +121,11 @@ theThreeBtns.confirmDeleteBtn.addEventListener('click', function (e) {
 
 xpqNoteList.addEventListener('click', function (e) {
   homeContainer.style.marginLeft = '-400px';
-  noteContent.style.display = 'block';
+  noteWrapper.style.display = 'block';
   showBtnBetweenTheThree('editBtn');
   newNoteContainer.style.display = 'none';
   var index = e.target.className[e.target.className.length - 1]
+  noteTitle.innerHTML = notes[parseInt(index)].title;
   noteContent.innerHTML = notes[parseInt(index)].content;
   selectedNoteIndex = index;
 })
