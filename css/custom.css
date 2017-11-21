@@ -103,8 +103,25 @@
 
 #xpqNewNoteContainer{
     padding: 20px;
+    padding-top: 10px;
     display: none;
 }
 
-#xpqNotesDetailContainer{
+#xpqNoteContent{
+  margin: 4px 0;
+}
+
+#xpqNoteTitle{
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+#xpqNoteList{
+  padding: 0;
+}
+#xpqNoteList li{
+  margin: 0;
+  padding: 4px 20px;
 }
