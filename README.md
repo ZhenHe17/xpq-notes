@@ -1,11 +1,15 @@
 # xpq-notes
 
-简单的便签功能 :
+## 简单的便签功能 :
 
 * 新建便签
 * 删除便签
 * 编辑便签
 * 阅读便签内容
+
+## 下载
+
+[小皮球便签](https://drive.google.com/open?id=1UdvlueZEBklipRAVZdqxECsB4dr9UkTZ)
 
 ## v1.1.0
 
