@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
-	"name": "小皮球和小气筒",
+	"name": "小皮球便签",
 	"version": "1.1.0",
-	"description": "小皮球和小气筒",
+	"description": "欢迎使用小皮球便签",
 	"icons":
 	{
 		"16": "img/icon.png",
